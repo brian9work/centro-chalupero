@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
   creator: "Centro Chalupero",
   openGraph: {
-    images: ["https://calpulalpan-sushi.onrender.com/presentacion.png"],
+    images: ["/logo.png"],
   },
 };
 
