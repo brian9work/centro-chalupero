@@ -3,7 +3,7 @@
         {
             "id": "cat_sope_001",
             "name": "Sope preparado",
-            "source": "https://tu-url-de-imagen.com/sope.png",
+            "source": "/images/sope.webp",
             "saucerList": [
                 {
                     "id": "sp_01",
@@ -70,7 +70,7 @@
         {
             "id": "cat_tortas_002",
             "name": "Tortas",
-            "source": "https://tu-url-de-imagen.com/tortas.png",
+            "source": "/images/torta.webp",
             "saucerList": [
                 {
                     "id": "to_01",
@@ -113,7 +113,7 @@
         {
             "id": "cat_guajolotas_003",
             "name": "Guajolotas",
-            "source": "https://tu-url-de-imagen.com/guajolotas.png",
+            "source": "/images/pambazo.webp",
             "saucerList": [
                 {
                     "id": "gu_01",
@@ -138,7 +138,7 @@
         {
             "id": "cat_pambazos_004",
             "name": "Pambazos",
-            "source": "https://tu-url-de-imagen.com/pambazos.png",
+            "source": "/images/pambazo.webp",
             "saucerList": [
                 {
                     "id": "pam_01",
@@ -187,7 +187,7 @@
         {
             "id": "cat_postres_005",
             "name": "Postres",
-            "source": "https://tu-url-de-imagen.com/postres.png",
+            "source": "/images/postres.webp",
             "saucerList": [
                 {
                     "id": "pos_01",
@@ -236,7 +236,7 @@
         {
             "id": "cat_bebidas_006",
             "name": "Bebidas",
-            "source": "https://tu-url-de-imagen.com/bebidas.png",
+            "source": "/images/bebida.webp",
             "saucerList": [
                 {
                     "id": "beb_01",
@@ -303,7 +303,7 @@
         {
             "id": "cat_004",
             "name": "Chalupas",
-            "source": "https://tu-url-de-imagen.com/chalupas.png",
+            "source": "/images/sope.webp",
             "saucerList": [
                 {
                     "id": "cha_01",
@@ -322,7 +322,7 @@
         {
             "id": "cat_005",
             "name": "Sopes sencillos",
-            "source": "https://tu-url-de-imagen.com/sopes_sencillos.png",
+            "source": "/images/sope.webp",
             "saucerList": [
                 {
                     "id": "sos_01",
@@ -341,7 +341,7 @@
         {
             "id": "cat_006",
             "name": "Gringas",
-            "source": "https://tu-url-de-imagen.com/gringas.png",
+            "source": "/images/torta.webp",
             "saucerList": [
                 {
                     "id": "gri_01",
@@ -378,7 +378,7 @@
         {
             "id": "cat_007",
             "name": "Tostadas",
-            "source": "https://tu-url-de-imagen.com/tostadas.png",
+            "source": "/images/sope.webp",
             "saucerList": [
                 {
                     "id": "tos_01",
@@ -403,7 +403,7 @@
         {
             "id": "cat_que_001",
             "name": "Quesadillas",
-            "source": "https://tu-url-de-imagen.com/quesadillas.png",
+            "source": "/images/quesadilla.webp",
             "saucerList": [
                 {
                     "id": "que_01",
@@ -488,7 +488,7 @@
         {
             "id": "cat_tac_001",
             "name": "Tacos",
-            "source": "https://tu-url-de-imagen.com/tacos.png",
+            "source": "/images/taco.webp",
             "saucerList": [
                 {
                     "id": "tac_01",
@@ -543,7 +543,7 @@
         {
             "id": "cat_tac_002",
             "name": "Tacos con tortilla de harina",
-            "source": "https://tu-url-de-imagen.com/tacos.png",
+            "source": "/images/taco.webp",
             "saucerList": [
                 {
                     "id": "tac_har_01",
@@ -598,7 +598,7 @@
         {
             "id": "cat_charolas_010",
             "name": "Charolas",
-            "source": "https://tu-url-de-imagen.com/charolas.png",
+            "source": "/images/charola.webp",
             "saucerList": [
                 { 
                     "id": "cha_01", 
