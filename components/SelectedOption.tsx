@@ -90,9 +90,9 @@ const Delivery = () => {
    };
 
    const transferData = {
-      bank: "Banco Ejemplo",
-      clabe: "1234 1234 1234 1234",
-      beneficiary: "Nombre del Beneficiario"
+      bank: "BBVA",
+      clabe: "4152 3140 9745 4055",
+      beneficiary: "Rosario Martinez Gonzalez"
    };
 
    const copyToClipboard = () => {
