@@ -64,6 +64,66 @@
                     "name": "Sope preparado (Choriqueso)",
                     "description": "Sope preparado con choriqueso",
                     "price": 30
+                },
+                {
+                    "id": "sp_01_extra",
+                    "name": "Sope preparado (Tinga) con extra ingrediente",
+                    "description": "Sope preparado con tinga con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_02_extra",
+                    "name": "Sope preparado (Chicharron prensado) con extra ingrediente",
+                    "description": "Sope preparado con chicharrón prensado con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_03_extra",
+                    "name": "Sope preparado (Alambre) con extra ingrediente",
+                    "description": "Sope preparado con alambre con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_04_extra",
+                    "name": "Sope preparado (Suadero) con extra ingrediente",
+                    "description": "Sope preparado con suadero con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_05_extra",
+                    "name": "Sope preparado (Pastor) con extra ingrediente",
+                    "description": "Sope preparado con pastor con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_06_extra",
+                    "name": "Sope preparado (Quesillo) con extra ingrediente",
+                    "description": "Sope preparado con quesillo con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_07_extra",
+                    "name": "Sope preparado (Longaniza) con extra ingrediente",
+                    "description": "Sope preparado con longaniza con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_08_extra",
+                    "name": "Sope preparado (Grasitas) con extra ingrediente",
+                    "description": "Sope preparado con grasitas con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_09_extra",
+                    "name": "Sope preparado (Campechano) con extra ingrediente",
+                    "description": "Sope preparado con campechano con extra ingrediente",
+                    "price": 40
+                },
+                {
+                    "id": "sp_10_extra",
+                    "name": "Sope preparado (Choriqueso) con extra ingrediente",
+                    "description": "Sope preparado con choriqueso con extra ingrediente",
+                    "price": 40
                 }
             ]
         },
@@ -107,6 +167,42 @@
                     "name": "Torta de Campechana",
                     "description": "Torta campechana",
                     "price": 40
+                },
+                {
+                    "id": "to_01_extra",
+                    "name": "Torta de Suadero extra",
+                    "description": "Torta de suadero extra",
+                    "price": 50
+                },
+                {
+                    "id": "to_02_extra",
+                    "name": "Torta de Pastor extra",
+                    "description": "Torta de pastor extra",
+                    "price": 50
+                },
+                {
+                    "id": "to_03_extra",
+                    "name": "Torta de Alambre extra",
+                    "description": "Torta de alambre extra",
+                    "price": 50
+                },
+                {
+                    "id": "to_04_extra",
+                    "name": "Torta de Longaniza extra",
+                    "description": "Torta de longaniza extra",
+                    "price": 50
+                },
+                {
+                    "id": "to_05_extra",
+                    "name": "Torta de Choriqueso extra",
+                    "description": "Torta de choriqueso extra",
+                    "price": 50
+                },
+                {
+                    "id": "to_06_extra",
+                    "name": "Torta de Campechana extra",
+                    "description": "Torta campechana extra",
+                    "price": 50
                 }
             ]
         },
@@ -181,6 +277,48 @@
                     "name": "Pambazo de Pastor",
                     "description": "Pambazo de pastor",
                     "price": 40
+                },
+                {
+                    "id": "pam_01_extra",
+                    "name": "Pambazo de Tinga extra",
+                    "description": "Pambazo de tinga extra",
+                    "price": 48
+                },
+                {
+                    "id": "pam_02_extra",
+                    "name": "Pambazo de Papas con chorizo extra",
+                    "description": "Pambazo de papas con chorizo extra",
+                    "price": 48
+                },
+                {
+                    "id": "pam_03_extra",
+                    "name": "Pambazo de Alambre extra",
+                    "description": "Pambazo de alambre extra",
+                    "price": 48
+                },
+                {
+                    "id": "pam_04_extra",
+                    "name": "Pambazo de Chicharron prensado extra",
+                    "description": "Pambazo de chicharrón prensado extra",
+                    "price": 48
+                },
+                {
+                    "id": "pam_05_extra",
+                    "name": "Pambazo de Choriqueso extra",
+                    "description": "Pambazo de choriqueso extra",
+                    "price": 48
+                },
+                {
+                    "id": "pam_06_extra",
+                    "name": "Pambazo de Suadero extra",
+                    "description": "Pambazo de suadero extra",
+                    "price": 50
+                },
+                {
+                    "id": "pam_07_extra",
+                    "name": "Pambazo de Pastor extra",
+                    "description": "Pambazo de pastor extra",
+                    "price": 50
                 }
             ]
         },
@@ -372,6 +510,36 @@
                     "name": "Gringas de Choriqueso",
                     "description": "Gringa de choriqueso",
                     "price": 45
+                },
+                {
+                    "id": "gri_01_extra",
+                    "name": "Gringas de Suadero extra",
+                    "description": "Gringa de suadero extra",
+                    "price": 55
+                },
+                {
+                    "id": "gri_02_extra",
+                    "name": "Gringas de Longaniza extra",
+                    "description": "Gringa de longaniza extra",
+                    "price": 55
+                },
+                {
+                    "id": "gri_03_extra",
+                    "name": "Gringas de Pastor extra",
+                    "description": "Gringa de pastor extra",
+                    "price": 55
+                },
+                {
+                    "id": "gri_04_extra",
+                    "name": "Gringas de Alambre extra",
+                    "description": "Gringa de alambre extra",
+                    "price": 55
+                },
+                {
+                    "id": "gri_05_extra",
+                    "name": "Gringas de Choriqueso extra",
+                    "description": "Gringa de choriqueso extra",
+                    "price": 55
                 }
             ]
         },
@@ -394,9 +562,33 @@
                 },
                 {
                     "id": "tos_03",
+                    "name": "Tostada sencilla",
+                    "description": "Tostada sencilla",
+                    "price": 17
+                },
+                {
+                    "id": "tos_04",
+                    "name": "Tostada sola",
+                    "description": "Tostada sola",
+                    "price": 10
+                },
+                {
+                    "id": "tos_05",
                     "name": "Tostada Combinada (tinga y pata)",
                     "description": "Tostada mixta de tinga y pata",
                     "price": 45
+                },
+                {
+                    "id": "tos_01_extra",
+                    "name": "Tostada de Tinga extra",
+                    "description": "Tostada de tinga extra",
+                    "price": 55
+                },
+                {
+                    "id": "tos_02_extra",
+                    "name": "Tostada de Pata extra",
+                    "description": "Tostada de pata extra",
+                    "price": 55
                 }
             ]
         },
@@ -412,10 +604,22 @@
                     "price": 25
                 },
                 {
+                    "id": "ques_01",
+                    "name": "Quesadilla de Tinga (con quesillo)",
+                    "description": "Quesadilla de tinga",
+                    "price": 30
+                },
+                {
                     "id": "que_02",
                     "name": "Quesadilla de Quesillo",
                     "description": "Quesadilla de solo quesillo",
                     "price": 25
+                },
+                {
+                    "id": "ques_02",
+                    "name": "Quesadilla de Quesillo (con quesillo)",
+                    "description": "Quesadilla de solo quesillo",
+                    "price": 30
                 },
                 {
                     "id": "que_03",
@@ -424,10 +628,22 @@
                     "price": 25
                 },
                 {
+                    "id": "ques_03",
+                    "name": "Quesadilla de Chicharron prensado (con quesillo)",
+                    "description": "Quesadilla de chicharrón prensado",
+                    "price": 30
+                },
+                {
                     "id": "que_04",
                     "name": "Quesadilla de Longaniza",
                     "description": "Quesadilla de longaniza",
                     "price": 25
+                },
+                {
+                    "id": "ques_04",
+                    "name": "Quesadilla de Longaniza (con quesillo)",
+                    "description": "Quesadilla de longaniza",
+                    "price": 30
                 },
                 {
                     "id": "que_05",
@@ -436,10 +652,22 @@
                     "price": 25
                 },
                 {
+                    "id": "ques_05",
+                    "name": "Quesadilla de Pastor (con quesillo)",
+                    "description": "Quesadilla de pastor",
+                    "price": 30
+                },
+                {
                     "id": "que_06",
                     "name": "Quesadilla de Suadero",
                     "description": "Quesadilla de suadero",
                     "price": 25
+                },
+                {
+                    "id": "ques_06",
+                    "name": "Quesadilla de Suadero (con quesillo)",
+                    "description": "Quesadilla de suadero",
+                    "price": 30
                 },
                 {
                     "id": "que_07",
@@ -448,10 +676,22 @@
                     "price": 25
                 },
                 {
+                    "id": "ques_07",
+                    "name": "Quesadilla de Alambre (con quesillo)",
+                    "description": "Quesadilla de alambre",
+                    "price": 30
+                },
+                {
                     "id": "que_08",
                     "name": "Quesadilla de Choriqueso",
                     "description": "Quesadilla de choriqueso",
                     "price": 25
+                },
+                {
+                    "id": "ques_08",
+                    "name": "Quesadilla de Choriqueso (con quesillo)",
+                    "description": "Quesadilla de choriqueso",
+                    "price": 30
                 },
                 {
                     "id": "que_09",
@@ -460,10 +700,22 @@
                     "price": 25
                 },
                 {
+                    "id": "ques_09",
+                    "name": "Quesadilla de Huitlacoche (con quesillo)",
+                    "description": "Quesadilla de huitlacoche",
+                    "price": 30
+                },
+                {
                     "id": "que_10",
                     "name": "Quesadilla de Champiñón",
                     "description": "Quesadilla de champiñón",
                     "price": 25
+                },
+                {
+                    "id": "ques_10",
+                    "name": "Quesadilla de Champiñón (con quesillo)",
+                    "description": "Quesadilla de champiñón",
+                    "price": 30
                 },
                 {
                     "id": "que_11",
@@ -472,16 +724,34 @@
                     "price": 25
                 },
                 {
+                    "id": "ques_11",
+                    "name": "Quesadilla de Mollejas a la mexicana (con quesillo)",
+                    "description": "Quesadilla de mollejas a la mexicana",
+                    "price": 30
+                },
+                {
                     "id": "que_12",
                     "name": "Quesadilla de Grasitas",
                     "description": "Quesadilla de grasitas",
                     "price": 25
                 },
                 {
+                    "id": "ques_12",
+                    "name": "Quesadilla de Grasitas (con quesillo)",
+                    "description": "Quesadilla de grasitas",
+                    "price": 30
+                },
+                {
                     "id": "que_13",
                     "name": "Quesadilla de Nopales con longaniza",
                     "description": "Quesadilla de nopales con longaniza",
                     "price": 25
+                },
+                {
+                    "id": "ques_13",
+                    "name": "Quesadilla de Nopales con longaniza (con quesillo)",
+                    "description": "Quesadilla de nopales con longaniza",
+                    "price": 30
                 }
             ]
         },
@@ -537,6 +807,54 @@
                     "name": "Taco de Mollejas a la mexicana",
                     "description": "Taco de mollejas a la mexicana",
                     "price": 23
+                },
+                {
+                    "id": "tac_01_extra",
+                    "name": "Taco de Suadero extra",
+                    "description": "Taco de suadero extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_02_extra",
+                    "name": "Taco de Longaniza extra",
+                    "description": "Taco de longaniza extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_03_extra",
+                    "name": "Taco de Pastor extra",
+                    "description": "Taco de pastor extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_04_extra",
+                    "name": "Taco de Choriqueso extra",
+                    "description": "Taco de choriqueso extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_05_extra",
+                    "name": "Taco de Alambre extra",
+                    "description": "Taco de alambre extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_06_extra",
+                    "name": "Taco de Nopales con longaniza extra",
+                    "description": "Taco de nopales con longaniza extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_07_extra",
+                    "name": "Taco de Campechano extra",
+                    "description": "Taco campechano extra",
+                    "price": 33
+                },
+                {
+                    "id": "tac_08_extra",
+                    "name": "Taco de Mollejas a la mexicana extra",
+                    "description": "Taco de mollejas a la mexicana extra",
+                    "price": 33
                 }
             ]
         },
@@ -592,6 +910,54 @@
                     "name": "Taco de Mollejas a la mexicana de harina",
                     "description": "Taco de mollejas a la mexicana",
                     "price": 25
+                },
+                {
+                    "id": "tac_har_01_extra",
+                    "name": "Taco de Suadero de harina extra",
+                    "description": "Taco de suadero extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_02_extra",
+                    "name": "Taco de Longaniza de harina extra",
+                    "description": "Taco de longaniza extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_03_extra",
+                    "name": "Taco de Pastor de harina extra",
+                    "description": "Taco de pastor extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_04_extra",
+                    "name": "Taco de Choriqueso de harina extra",
+                    "description": "Taco de choriqueso extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_05_extra",
+                    "name": "Taco de Alambre de harina extra",
+                    "description": "Taco de alambre extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_06_extra",
+                    "name": "Taco de Nopales de harina con longaniza extra",
+                    "description": "Taco de nopales con longaniza extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_07_extra",
+                    "name": "Taco de Campechano de harina extra",
+                    "description": "Taco campechano extra",
+                    "price": 35
+                },
+                {
+                    "id": "tac_har_08_extra",
+                    "name": "Taco de Mollejas a la mexicana de harina extra",
+                    "description": "Taco de mollejas a la mexicana extra",
+                    "price": 35
                 }
             ]
         },
@@ -600,23 +966,23 @@
             "name": "Charolas",
             "source": "/images/charola.webp",
             "saucerList": [
-                { 
-                    "id": "cha_01", 
-                    "name": "Charola de tacos", 
-                    "description": "5 tacos (suadero, pastor, choriqueso, alambre, nopales con longaniza, campechano, longaniza)", 
-                    "price": 100 
+                {
+                    "id": "cha_01",
+                    "name": "Charola de tacos",
+                    "description": "5 tacos (suadero, pastor, choriqueso, alambre, nopales con longaniza, campechano, longaniza)",
+                    "price": 100
                 },
-                { 
-                    "id": "cha_02", 
-                    "name": "Charola de quesadilla", 
-                    "description": "5 quesadillas (tinga, quesillo, choriqueso, huitlacoche, champiñón, mollejas a la mexicana, grasitas)", 
-                    "price": 110 
+                {
+                    "id": "cha_02",
+                    "name": "Charola de quesadilla",
+                    "description": "5 quesadillas (tinga, quesillo, choriqueso, huitlacoche, champiñón, mollejas a la mexicana, grasitas)",
+                    "price": 110
                 },
-                { 
-                    "id": "cha_03", 
-                    "name": "Charola de sopes", 
-                    "description": "4 órdenes de sopes (solo sopes sencillos)", 
-                    "price": 110 
+                {
+                    "id": "cha_03",
+                    "name": "Charola de sopes",
+                    "description": "4 órdenes de sopes (solo sopes sencillos)",
+                    "price": 110
                 }
             ]
         }
