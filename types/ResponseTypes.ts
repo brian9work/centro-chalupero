@@ -1,8 +1,14 @@
+export type ExtrasType = {
+    name: string,
+    price: number
+}
+
 export type SaucerType = {
     id: string;
     name: string;
     description?: string | "";
     price: number;
+    extra?: boolean;
 }
 
 export type CategoryType = {

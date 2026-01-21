@@ -7,7 +7,7 @@ const sendMessage = (data: Order, cartList: CartList) => {
     const sucursalCalvario = sucursales[1]
 
     const message = `*Hola me gustaria ordenar*%0A
-${cartList.map(item => `- ${item.name} x${item.quantity} = $${(item.price * item.quantity).toFixed(2)}`).join('%0A')}%0A
+${cartList.map(item => `- ${item.name} ${item.description ? `(${item.description})` : ""} x${item.quantity} = $${(item.price * item.quantity).toFixed(2)}`).join('%0A')}%0A
 El *total* del pedido es: *$${(cartList.reduce((total, item) => total + (item.price * item.quantity), 0) + costDelivery).toFixed(2)}*`
 
     if (data.type === "delivery") {
