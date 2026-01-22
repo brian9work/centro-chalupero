@@ -374,6 +374,12 @@
                     "price": 45
                 },
                 {
+                    "id": "tos_04",
+                    "name": "Tostada sencilla",
+                    "description": "frijoles, lechuga, crema, queso rallado",
+                    "price": 17
+                },
+                {
                     "id": "tos_02",
                     "name": "Tostada de Pata",
                     "description": "Tostada de pata",
@@ -384,6 +390,12 @@
                     "name": "Tostada Combinada (tinga y pata)",
                     "description": "Tostada mixta de tinga y pata",
                     "price": 45
+                },
+                {
+                    "id": "tos_05",
+                    "name": "Tostada sola",
+                    "description": "",
+                    "price": 10
                 }
             ]
         },
@@ -396,79 +408,92 @@
                     "id": "que_01",
                     "name": "Quesadilla de Tinga",
                     "description": "Quesadilla de tinga",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_02",
                     "name": "Quesadilla de Quesillo",
                     "description": "Quesadilla de solo quesillo",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_03",
                     "name": "Quesadilla de Chicharron prensado",
                     "description": "Quesadilla de chicharrón prensado",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_04",
                     "name": "Quesadilla de Longaniza",
                     "description": "Quesadilla de longaniza",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_05",
                     "name": "Quesadilla de Pastor",
                     "description": "Quesadilla de pastor",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_06",
                     "name": "Quesadilla de Suadero",
                     "description": "Quesadilla de suadero",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_07",
                     "name": "Quesadilla de Alambre",
                     "description": "Quesadilla de alambre",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_08",
                     "name": "Quesadilla de Choriqueso",
                     "description": "Quesadilla de choriqueso",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_09",
                     "name": "Quesadilla de Huitlacoche",
                     "description": "Quesadilla de huitlacoche",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_10",
                     "name": "Quesadilla de Champiñón",
                     "description": "Quesadilla de champiñón",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_11",
                     "name": "Quesadilla de Mollejas a la mexicana",
                     "description": "Quesadilla de mollejas a la mexicana",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_12",
                     "name": "Quesadilla de Grasitas",
                     "description": "Quesadilla de grasitas",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 },
                 {
                     "id": "que_13",
                     "name": "Quesadilla de Nopales con longaniza",
                     "description": "Quesadilla de nopales con longaniza",
-                    "price": 25
+                    "price": 25,
+                    "extra": true
                 }
             ]
         },

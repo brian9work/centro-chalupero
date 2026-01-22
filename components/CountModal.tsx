@@ -12,10 +12,6 @@ export default function CountModal() {
   const [price, setPrice] = useState(selectedItem?.price || 0);
   const [extras, setExtras] = useState<ExtrasType[]>([]);
 
-  /* 
-    IMPORTANT: Hooks must be called before any early returns (Rules of Hooks).
-    Do NOT move these conditional returns up again.
-  */
   useEffect(() => {
     setPrice(selectedItem?.price || 0);
     setExtras([]);
@@ -47,7 +43,7 @@ export default function CountModal() {
       {
         id: selectedItem.id,
         name: selectedItem.name,
-        description: "Con extras: " + extras.map(extra => extra.name).join(", "),
+        description: extras.length > 0 ? "%0A *extras*: " + extras.map(extra => extra.name).join(",") : "",
         price: price,
         quantity: quantity,
 
@@ -104,6 +100,35 @@ export default function CountModal() {
           <div className='mt-2'>
             <p className="text-gray-800 font-bold text-lg mb-3">Extras</p>
             <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
+              {selectedItem?.name.includes("Quesadilla") ?
+                <label
+                  htmlFor={`extra-quesa`}
+                  className="flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-orange-200 hover:bg-orange-50 transition-all cursor-pointer group"
+                >
+                  <div className="flex items-center gap-3">
+                    <input
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setPrice(price + 5);
+                          setExtras([...extras, {name: " ",price: 5}]);
+                        } else {
+                          setPrice(price - 5);
+                          setExtras(extras.filter((item) => item.name !== "quesillo"));
+                        }
+                      }}
+                      type="checkbox"
+                      id={`extra-quesa`}
+                      className="w-5 h-5 rounded-md border-gray-300 text-orange-500 focus:ring-orange-200 cursor-pointer accent-orange-500"
+                    />
+                    <span className="text-gray-700 font-medium group-hover:text-gray-900">Quesillo</span>
+                  </div>
+                  <span className="text-orange-500 font-bold bg-orange-50 px-2.5 py-1 rounded-lg text-sm group-hover:bg-white border border-transparent group-hover:border-orange-100 transition-colors">
+                    +${5.00}
+                  </span>
+                </label>
+                : <></>
+
+              }
               {ExtrasData.map((extra: ExtrasType, index: number) => (
                 <label
                   key={`${extra.name}-${index}`}
