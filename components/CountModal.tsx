@@ -56,6 +56,7 @@ export default function CountModal() {
     <ModalComponents handleClose={handleClose}>
       <ModalHeader text="Agregar Platillo" handleClose={handleClose} />
 
+      {JSON.stringify(selectedItem)}
       <div className="mb-6">
         <p className="text-gray-600 text-sm mb-1">Seleccionaste:</p>
         <div className='flex items-center justify-between'>
@@ -100,68 +101,50 @@ export default function CountModal() {
           <div className='mt-2'>
             <p className="text-gray-800 font-bold text-lg mb-3">Extras</p>
             <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
-              {selectedItem?.name.includes("Quesadilla") ?
-                <label
-                  htmlFor={`extra-quesa`}
-                  className="flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-orange-200 hover:bg-orange-50 transition-all cursor-pointer group"
-                >
-                  <div className="flex items-center gap-3">
-                    <input
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setPrice(price + 5);
-                          setExtras([...extras, {name: " ",price: 5}]);
-                        } else {
-                          setPrice(price - 5);
-                          setExtras(extras.filter((item) => item.name !== "quesillo"));
-                        }
-                      }}
-                      type="checkbox"
-                      id={`extra-quesa`}
-                      className="w-5 h-5 rounded-md border-gray-300 text-orange-500 focus:ring-orange-200 cursor-pointer accent-orange-500"
+              {selectedItem?.category === "Chalupas" ?
+                <>
+                  {ExtrasData.chalupa.map((extra: ExtrasType, index: number) => (
+                    <ExtraItem
+                      key={`${extra.name}-${index}`}
+                      extra={extra}
+                      price={price}
+                      setPrice={setPrice}
+                      extras={extras}
+                      setExtras={setExtras}
                     />
-                    <span className="text-gray-700 font-medium group-hover:text-gray-900">Quesillo</span>
-                  </div>
-                  <span className="text-orange-500 font-bold bg-orange-50 px-2.5 py-1 rounded-lg text-sm group-hover:bg-white border border-transparent group-hover:border-orange-100 transition-colors">
-                    +${5.00}
-                  </span>
-                </label>
-                : <></>
-
+                  ))}
+                </>
+                :
+                selectedItem?.category === "Quesadillas" ?
+                  <>
+                    {ExtrasData.quesadilla.map((extra: ExtrasType, index: number) => (
+                      <ExtraItem
+                        key={`${extra.name}-${index}`}
+                        extra={extra}
+                        price={price}
+                        setPrice={setPrice}
+                        extras={extras}
+                        setExtras={setExtras}
+                      />
+                    ))}
+                  </>
+                  :
+                  <>
+                    {ExtrasData.general.map((extra: ExtrasType, index: number) => (
+                      <ExtraItem
+                        key={`${extra.name}-${index}`}
+                        extra={extra}
+                        price={price}
+                        setPrice={setPrice}
+                        extras={extras}
+                        setExtras={setExtras}
+                      />
+                    ))}
+                  </>
               }
-              {ExtrasData.map((extra: ExtrasType, index: number) => (
-                <label
-                  key={`${extra.name}-${index}`}
-                  htmlFor={`extra-${index}`}
-                  className="flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-orange-200 hover:bg-orange-50 transition-all cursor-pointer group"
-                >
-                  <div className="flex items-center gap-3">
-                    <input
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setPrice(price + extra.price);
-                          setExtras([...extras, extra]);
-                        } else {
-                          setPrice(price - extra.price);
-                          setExtras(extras.filter((item) => item.name !== extra.name));
-                        }
-                      }}
-                      type="checkbox"
-                      id={`extra-${index}`}
-                      className="w-5 h-5 rounded-md border-gray-300 text-orange-500 focus:ring-orange-200 cursor-pointer accent-orange-500"
-                    />
-                    <span className="text-gray-700 font-medium group-hover:text-gray-900">{extra.name}</span>
-                  </div>
-                  <span className="text-orange-500 font-bold bg-orange-50 px-2.5 py-1 rounded-lg text-sm group-hover:bg-white border border-transparent group-hover:border-orange-100 transition-colors">
-                    +${Number(extra.price).toFixed(2)}
-                  </span>
-                </label>
-              ))}
             </div>
           </div>
         )}
-
-
 
         <button
           type="submit"
@@ -174,5 +157,35 @@ export default function CountModal() {
         </button>
       </form>
     </ModalComponents>
+  )
+}
+
+const ExtraItem = ({ extra, price, setPrice, extras, setExtras }: { extra: ExtrasType, price: number, setPrice: React.Dispatch<React.SetStateAction<number>>, extras: ExtrasType[], setExtras: React.Dispatch<React.SetStateAction<ExtrasType[]>> }) => {
+  return (
+    <label
+      htmlFor={`extra-${extra.name}`}
+      className="flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-orange-200 hover:bg-orange-50 transition-all cursor-pointer group"
+    >
+      <div className="flex items-center gap-3">
+        <input
+          onChange={(e) => {
+            if (e.target.checked) {
+              setPrice(price + extra.price);
+              setExtras([...extras, extra]);
+            } else {
+              setPrice(price - extra.price);
+              setExtras(extras.filter((item) => item.name !== extra.name));
+            }
+          }}
+          type="checkbox"
+          id={`extra-${extra.name}`}
+          className="w-5 h-5 rounded-md border-gray-300 text-orange-500 focus:ring-orange-200 cursor-pointer accent-orange-500"
+        />
+        <span className="text-gray-700 font-medium group-hover:text-gray-900">{extra.name}</span>
+      </div>
+      <span className="text-orange-500 font-bold bg-orange-50 px-2.5 py-1 rounded-lg text-sm group-hover:bg-white border border-transparent group-hover:border-orange-100 transition-colors">
+        +${Number(extra.price).toFixed(2)}
+      </span>
+    </label>
   )
 }

@@ -1,46 +1,64 @@
-[
-    {
-        "name": "Tinga ",
-        "price": 10
-    },
-    {
-        "name": "Chicharrón prensado ",
-        "price": 10
-    },
-    {
-        "name": "Longaniza ",
-        "price": 10
-    },
-    {
-        "name": "Pastor ",
-        "price": 10
-    },
-    {
-        "name": "Suadero",
-        "price": 10
-    },
-    {
-        "name": "Alambre",
-        "price": 10
-    },
-    {
-        "name": "Choriqueso ",
-        "price": 10
-    },
-    {
-        "name": "Huitlacoche",
-        "price": 10
-    },
-    {
-        "name": "Champiñón",
-        "price": 10
-    },
-    {
-        "name": "Mollejas a la mexicana",
-        "price": 10
-    },
-    {
-        "name": "Gracitas",
-        "price": 10
-    }
-]
+{
+    "general": [
+        {
+            "name": "Quesillo",
+            "price": 5
+        },
+        {
+            "name": "Tinga ",
+            "price": 10
+        },
+        {
+            "name": "Chicharrón prensado ",
+            "price": 10
+        },
+        {
+            "name": "Longaniza ",
+            "price": 10
+        },
+        {
+            "name": "Pastor ",
+            "price": 10
+        },
+        {
+            "name": "Suadero",
+            "price": 10
+        },
+        {
+            "name": "Alambre",
+            "price": 10
+        },
+        {
+            "name": "Choriqueso ",
+            "price": 10
+        },
+        {
+            "name": "Huitlacoche",
+            "price": 10
+        },
+        {
+            "name": "Champiñón",
+            "price": 10
+        },
+        {
+            "name": "Mollejas a la mexicana",
+            "price": 10
+        },
+        {
+            "name": "Gracitas",
+            "price": 10
+        }
+    ],
+    "chalupa": [
+        {
+            "name": "Carne desebrada",
+            "price": 10
+        }
+    ],
+    "quesadilla": [
+        {
+            "name": "Quesillo",
+            "price": 5
+        }
+    ]
+}

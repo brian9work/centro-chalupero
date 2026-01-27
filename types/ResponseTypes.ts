@@ -7,6 +7,7 @@ export type SaucerType = {
     id: string;
     name: string;
     description?: string | "";
+    category?: string | ""
     price: number;
     extra?: boolean;
 }

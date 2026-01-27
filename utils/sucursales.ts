@@ -11,8 +11,13 @@ const sucursales = [
 
 const date = new Date();
 const hour = date.getHours();
+const minutes = date.getMinutes();
 
-export const deliveryCost = hour >= 20 ? 40 : 35;
+export const deliveryCost =
+  hour > 20 || (hour === 19 && minutes >= 30)
+    ? 40
+    : 35;
+
 export const phoneNumber = "+527491046515";
 
 export default sucursales;

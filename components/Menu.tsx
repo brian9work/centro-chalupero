@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { MenuType } from '../types/ResponseTypes';
+import { CategoryType, MenuType, SaucerType } from '../types/ResponseTypes';
 import menu from '../mock/menu.json';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Josefin_Sans } from 'next/font/google';
@@ -23,7 +23,7 @@ export default function Menu() {
     </div>
   )
 }
-const Category = ({ category }: { category: MenuType['data'][0] }) => {
+const Category = ({ category }: { category: CategoryType }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -54,7 +54,7 @@ const Category = ({ category }: { category: MenuType['data'][0] }) => {
       <div className={`transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[2000] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="p-2 space-y-2 pb-4">
           {category.saucerList.map((saucer) => (
-            <Saucer key={saucer.id} saucer={saucer} />
+            <Saucer key={saucer.id} saucer={saucer} category={category.name} />
           ))}
         </div>
       </div>
@@ -62,14 +62,14 @@ const Category = ({ category }: { category: MenuType['data'][0] }) => {
   )
 }
 
-const Saucer = ({ saucer }: { saucer: MenuType['data'][0]['saucerList'][0] }) => {
+const Saucer = ({ saucer, category }: { saucer: SaucerType, category: string }) => {
   const { setCountModal, setSelectedItem } = MyContext();
 
   return (
     <div
       className='group cursor-pointer p-4 rounded-2xl flex items-center justify-between gap-4 hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-100 0'
       onClick={() => {
-        setSelectedItem(saucer);
+        setSelectedItem({ ...saucer, category: category });
         setCountModal(true);
       }}
     >

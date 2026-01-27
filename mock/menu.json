@@ -135,8 +135,7 @@
                     "id": "gu_01",
                     "name": "Guajolota de chalupas",
                     "description": "Guajolota rellena de chalupas",
-                    "price": 40,
-                    "extra": true
+                    "price": 40
                 },
                 {
                     "id": "gu_02",
@@ -163,50 +162,43 @@
                     "id": "pam_01",
                     "name": "Pambazo de Tinga",
                     "description": "Pambazo de tinga",
-                    "price": 38,
-                    "extra": true
+                    "price": 38
                 },
                 {
                     "id": "pam_02",
                     "name": "Pambazo de Papas con chorizo",
                     "description": "Pambazo de papas con chorizo",
-                    "price": 38,
-                    "extra": true
+                    "price": 38
                 },
                 {
                     "id": "pam_03",
                     "name": "Pambazo de Alambre",
                     "description": "Pambazo de alambre",
-                    "price": 38,
-                    "extra": true
+                    "price": 38
                 },
                 {
                     "id": "pam_04",
                     "name": "Pambazo de Chicharron prensado",
                     "description": "Pambazo de chicharrón prensado",
-                    "price": 38,
-                    "extra": true
+                    "price": 38
                 },
                 {
                     "id": "pam_05",
                     "name": "Pambazo de Choriqueso",
                     "description": "Pambazo de choriqueso",
-                    "price": 38,
-                    "extra": true
+                    "price": 38
                 },
                 {
                     "id": "pam_06",
                     "name": "Pambazo de Suadero",
                     "description": "Pambazo de suadero",
-                    "price": 40,
-                    "extra": true
+                    "price": 40
                 },
                 {
                     "id": "pam_07",
                     "name": "Pambazo de Pastor",
                     "description": "Pambazo de pastor",
-                    "price": 40,
-                    "extra": true
+                    "price": 40
                 }
             ]
         },
@@ -308,15 +300,13 @@
                     "id": "sos_01",
                     "name": "Orden de sopes (3 piezas)",
                     "description": "Tres sopes sencillos",
-                    "price": 30,
-                    "extra": true
+                    "price": 30
                 },
                 {
                     "id": "sos_02",
                     "name": "Sope (1 pieza)",
                     "description": "Una pieza de sope sencillo",
-                    "price": 12,
-                    "extra": true
+                    "price": 12
                 }
             ]
         },
@@ -329,36 +319,31 @@
                     "id": "gri_01",
                     "name": "Gringas de Suadero",
                     "description": "Gringa de suadero",
-                    "price": 45,
-                    "extra": true
+                    "price": 45
                 },
                 {
                     "id": "gri_02",
                     "name": "Gringas de Longaniza",
                     "description": "Gringa de longaniza",
-                    "price": 45,
-                    "extra": true
+                    "price": 45
                 },
                 {
                     "id": "gri_03",
                     "name": "Gringas de Pastor",
                     "description": "Gringa de pastor",
-                    "price": 45,
-                    "extra": true
+                    "price": 45
                 },
                 {
                     "id": "gri_04",
                     "name": "Gringas de Alambre",
                     "description": "Gringa de alambre",
-                    "price": 45,
-                    "extra": true
+                    "price": 45
                 },
                 {
                     "id": "gri_05",
                     "name": "Gringas de Choriqueso",
                     "description": "Gringa de choriqueso",
-                    "price": 45,
-                    "extra": true
+                    "price": 45
                 }
             ]
         },
