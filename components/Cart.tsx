@@ -1,5 +1,5 @@
 import { MyContext } from '@/context/Context';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import ModalHeader from './ModalHeader';
 import ModalComponents from './ModalComponents';
 
@@ -51,45 +51,58 @@ export default function Cart() {
                </div>
             ) : (
                cartList.map((item, index) => (
-                  <div key={item.id || index} className="flex gap-4 p-3 bg-gray-50 rounded-2xl items-center shadow-sm">
-                     {/* Placeholder Image or Icon */}
-                     <div className="h-16 w-16 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm border border-gray-100 shrink-0">
-                         🌯️
-                     </div>
+                  <div key={item.id || index} className='space-y-2 p-3 bg-gray-50 rounded-2xl shadow-sm'>
+                     <div className="flex gap-4 items-center">
+                        {/* Placeholder Image or Icon */}
+                        <div className="h-16 w-16 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm border border-gray-100 shrink-0">
+                           🌯️
+                        </div>
 
-                     <div className="flex-1">
-                        <h4 className="font-bold text-gray-800 line-clamp-1">{item.name}</h4>
-                        <p className="text-gray-500 text-xs mb-2">${item.price}</p>
+                        <div className="flex-1">
+                           <h4 className="font-bold text-gray-800 line-clamp-1">{item.name}</h4>
+                           <p className="text-gray-500 text-xs mb-2">${item.price}</p>
 
-                        <div className="flex items-center gap-2">
+                           <div className="flex items-center gap-2">
+                              <button
+                                 onClick={() => item.id && handleDecrement(item.id)}
+                                 className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-gray-200 text-gray-600"
+                              >
+                                 -
+                              </button>
+                              <span className="font-semibold w-6 text-center text-sm text-black">{item.quantity}</span>
+                              <button
+                                 onClick={() => item.id && handleIncrement(item.id)}
+                                 className="w-6 h-6 flex items-center justify-center bg-black rounded-lg hover:bg-gray-800 text-white"
+                              >
+                                 +
+                              </button>
+                           </div>
+                        </div>
+
+                        <div className='flex flex-col items-end gap-2'>
+                           <span className="font-bold text-rose-500">${(item.price * item.quantity).toFixed(2)}</span>
                            <button
-                              onClick={() => item.id && handleDecrement(item.id)}
-                              className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-gray-200 text-gray-600"
+                              onClick={() => item.id && handleRemoveItem(item.id)}
+                              className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                              title="Eliminar"
                            >
-                              -
-                           </button>
-                           <span className="font-semibold w-6 text-center text-sm text-black">{item.quantity}</span>
-                           <button
-                              onClick={() => item.id && handleIncrement(item.id)}
-                              className="w-6 h-6 flex items-center justify-center bg-black rounded-lg hover:bg-gray-800 text-white"
-                           >
-                              +
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
                            </button>
                         </div>
                      </div>
-
-                     <div className='flex flex-col items-end gap-2'>
-                        <span className="font-bold text-rose-500">${(item.price * item.quantity).toFixed(2)}</span>
-                        <button
-                           onClick={() => item.id && handleRemoveItem(item.id)}
-                           className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                           title="Eliminar"
-                        >
-                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                           </svg>
-                        </button>
-                     </div>
+                     {item.selectedOptions && item.selectedOptions.length > 0 ? (
+                        <div className="flex flex-wrap gap-1.5 mt-2">
+                           {item.selectedOptions.map((opt, i) => (
+                              <span key={i} className="text-xs font-medium bg-white text-gray-600 border border-gray-200 px-2 py-1 rounded-lg">
+                                 {opt}
+                              </span>
+                           ))}
+                        </div>
+                     ) : item.description && (
+                        <h4 className="text-gray-800 text-sm mt-1">{item.description.replaceAll('%0A', '').replaceAll('*', '')}</h4>
+                     )}
                   </div>
                ))
             )}

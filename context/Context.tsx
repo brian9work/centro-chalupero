@@ -35,8 +35,6 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
 
   const [optionModal, setOptionModal] = useState<ModalOption>(null);
   const [deliveryModal, setDeliveryModal] = useState<boolean>(false);
-  
-
 
   return (
     <Context.Provider value={{

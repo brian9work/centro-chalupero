@@ -6,6 +6,7 @@ export type Cart = {
    price: number
    description?: string | ""
    quantity: number;
+   selectedOptions: string[];
 }
 
 export type Order = {

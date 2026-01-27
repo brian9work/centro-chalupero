@@ -5,16 +5,20 @@ import ModalHeader from './ModalHeader';
 import ModalComponents from './ModalComponents';
 import ExtrasData from '@/mock/extras.json'
 import { ExtrasType } from '@/types/ResponseTypes';
+import tacoType from '@/mock/tacosType.json'
+import quesadillaType from '@/mock/QuesadillasType.json'
 
 export default function CountModal() {
   const { countModal, setCountModal, selectedItem, setCartList, cartList } = MyContext();
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(selectedItem?.price || 0);
   const [extras, setExtras] = useState<ExtrasType[]>([]);
+  const [charolaSelections, setCharolaSelections] = useState<string[]>(Array(5).fill(''));
 
   useEffect(() => {
     setPrice(selectedItem?.price || 0);
     setExtras([]);
+    setCharolaSelections(Array(5).fill(''));
   }, [selectedItem]);
 
   if (!countModal) return null;
@@ -41,12 +45,36 @@ export default function CountModal() {
     setCartList([
       ...cartList,
       {
-        id: selectedItem.id,
+        id: Date.now().toString(),
         name: selectedItem.name,
         description: extras.length > 0 ? "%0A *extras*: " + extras.map(extra => extra.name).join(",") : "",
         price: price,
         quantity: quantity,
+        selectedOptions: extras.map(extra => extra.name),
+      },
+    ]);
+    handleClose();
+  };
 
+  const handleCharolaSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (charolaSelections.some(s => s === "")) {
+      alert("Por favor selecciona todos los sabores.");
+      return;
+    }
+
+    setCartList([
+      ...cartList,
+      {
+        id: Date.now().toString(),
+        name: selectedItem.name,
+        description: "%0A " + Object.entries(charolaSelections.reduce((acc, curr) => {
+          acc[curr] = (acc[curr] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>)).map(([key, value]) => `${value} de ${key}`).join(", "),
+        price: selectedItem.price,
+        quantity: quantity,
+        selectedOptions: charolaSelections,
       },
     ]);
     handleClose();
@@ -56,7 +84,6 @@ export default function CountModal() {
     <ModalComponents handleClose={handleClose}>
       <ModalHeader text="Agregar Platillo" handleClose={handleClose} />
 
-      {JSON.stringify(selectedItem)}
       <div className="mb-6">
         <p className="text-gray-600 text-sm mb-1">Seleccionaste:</p>
         <div className='flex items-center justify-between'>
@@ -65,59 +92,46 @@ export default function CountModal() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
-          <button
-            type="button"
-            onClick={handleDecrement}
-            className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition-all"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-            </svg>
-          </button>
+      {selectedItem?.category !== "Charolas" || selectedItem.name === "Charola de sopes" ?
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
+            <button
+              type="button"
+              onClick={handleDecrement}
+              className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+              </svg>
+            </button>
 
-          <input
-            type="number"
-            min="1"
-            value={quantity}
-            onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-            className="w-16 text-center bg-transparent font-bold text-xl text-gray-800 focus:outline-none appearance-none m-0"
-            style={{ MozAppearance: 'textfield' }} // Removes spinner on Firefox
-          />
+            <input
+              type="number"
+              min="1"
+              value={quantity}
+              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+              className="w-16 text-center bg-transparent font-bold text-xl text-gray-800 focus:outline-none appearance-none m-0"
+              style={{ MozAppearance: 'textfield' }} // Removes spinner on Firefox
+            />
 
-          <button
-            type="button"
-            onClick={handleIncrement}
-            className="w-10 h-10 flex items-center justify-center bg-orange-500 rounded-xl shadow-md shadow-orange-200 text-white hover:bg-orange-600 active:scale-95 transition-all"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={handleIncrement}
+              className="w-10 h-10 flex items-center justify-center bg-orange-500 rounded-xl shadow-md shadow-orange-200 text-white hover:bg-orange-600 active:scale-95 transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+            </button>
+          </div>
 
-        {selectedItem?.extra && (
-          <div className='mt-2'>
-            <p className="text-gray-800 font-bold text-lg mb-3">Extras</p>
-            <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
-              {selectedItem?.category === "Chalupas" ?
-                <>
-                  {ExtrasData.chalupa.map((extra: ExtrasType, index: number) => (
-                    <ExtraItem
-                      key={`${extra.name}-${index}`}
-                      extra={extra}
-                      price={price}
-                      setPrice={setPrice}
-                      extras={extras}
-                      setExtras={setExtras}
-                    />
-                  ))}
-                </>
-                :
-                selectedItem?.category === "Quesadillas" ?
+          {selectedItem?.extra && (
+            <div className='mt-2'>
+              <p className="text-gray-800 font-bold text-lg mb-3">Extras</p>
+              <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
+                {selectedItem?.category === "Chalupas" ?
                   <>
-                    {ExtrasData.quesadilla.map((extra: ExtrasType, index: number) => (
+                    {ExtrasData.chalupa.map((extra: ExtrasType, index: number) => (
                       <ExtraItem
                         key={`${extra.name}-${index}`}
                         extra={extra}
@@ -129,33 +143,128 @@ export default function CountModal() {
                     ))}
                   </>
                   :
-                  <>
-                    {ExtrasData.general.map((extra: ExtrasType, index: number) => (
-                      <ExtraItem
-                        key={`${extra.name}-${index}`}
-                        extra={extra}
-                        price={price}
-                        setPrice={setPrice}
-                        extras={extras}
-                        setExtras={setExtras}
-                      />
-                    ))}
-                  </>
-              }
+                  selectedItem?.category === "Quesadillas" ?
+                    <>
+                      {ExtrasData.quesadilla.map((extra: ExtrasType, index: number) => (
+                        <ExtraItem
+                          key={`${extra.name}-${index}`}
+                          extra={extra}
+                          price={price}
+                          setPrice={setPrice}
+                          extras={extras}
+                          setExtras={setExtras}
+                        />
+                      ))}
+                    </>
+                    :
+                    <>
+                      {ExtrasData.general.map((extra: ExtrasType, index: number) => (
+                        <ExtraItem
+                          key={`${extra.name}-${index}`}
+                          extra={extra}
+                          price={price}
+                          setPrice={setPrice}
+                          extras={extras}
+                          setExtras={setExtras}
+                        />
+                      ))}
+                    </>
+                }
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <button
-          type="submit"
-          className="w-full bg-black text-white py-3.5 rounded-2xl font-semibold shadow-lg shadow-gray-200 hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2"
-        >
-          <span>Agregar al Carrito</span>
-          <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
-            ${(selectedItem.price * quantity).toFixed(2)}
-          </span>
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="w-full bg-black text-white py-3.5 rounded-2xl font-semibold shadow-lg shadow-gray-200 hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Agregar al Carrito</span>
+            <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
+              ${(selectedItem.price * quantity).toFixed(2)}
+            </span>
+          </button>
+        </form>
+        :
+        <>
+          <form onSubmit={handleCharolaSubmit} className="flex flex-col gap-6">
+            <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
+              <button
+                type="button"
+                onClick={handleDecrement}
+                className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                </svg>
+              </button>
+
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                className="w-16 text-center bg-transparent font-bold text-xl text-gray-800 focus:outline-none appearance-none m-0"
+                style={{ MozAppearance: 'textfield' }}
+              />
+
+              <button
+                type="button"
+                onClick={handleIncrement}
+                className="w-10 h-10 flex items-center justify-center bg-orange-500 rounded-xl shadow-md shadow-orange-200 text-white hover:bg-orange-600 active:scale-95 transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+
+            <div className='mt-2'>
+              <p className="text-gray-800 font-bold text-lg mb-3">
+                Elige tus 5 {selectedItem?.name.toLowerCase().includes("taco") ? "tacos" : "quesadillas"}
+              </p>
+              <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <div key={index} className="flex flex-col gap-1">
+                    <label className="text-sm font-medium text-gray-700">
+                      {selectedItem?.name.toLowerCase().includes("taco") ? `Taco` : `Quesadilla`} {index + 1}
+                    </label>
+                    <select
+                      value={charolaSelections[index] || ""}
+                      onChange={(e) => {
+                        const newSelections = [...charolaSelections];
+                        newSelections[index] = e.target.value;
+                        setCharolaSelections(newSelections);
+                      }}
+                      className="w-full p-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                      required
+                    >
+                      <option value="" disabled>Selecciona un sabor</option>
+                      {(selectedItem?.name.toLowerCase().includes("taco") ? tacoType : quesadillaType).map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-black text-white py-3.5 rounded-2xl font-semibold shadow-lg shadow-gray-200 hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2"
+            >
+              <span>Agregar al Carrito</span>
+              <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
+                ${(selectedItem.price * quantity).toFixed(2)}
+              </span>
+            </button>
+          </form>
+        </>
+
+      }
+
+
     </ModalComponents>
   )
 }
