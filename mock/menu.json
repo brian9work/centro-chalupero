@@ -139,14 +139,14 @@
                 },
                 {
                     "id": "gu_02",
-                    "name": "Guajolota de quesadilla",
+                    "name": "Guajolota quesadilla",
                     "description": "Guajolota rellena de quesadilla",
                     "price": 50,
                     "extra": true
                 },
                 {
                     "id": "gu_03",
-                    "name": "Guajolota de taco",
+                    "name": "Guajolota taco",
                     "description": "Guajolota rellena de taco",
                     "price": 50,
                     "extra": true
@@ -597,23 +597,23 @@
             "name": "Charolas",
             "source": "/images/charola.webp",
             "saucerList": [
-                { 
-                    "id": "cha_01", 
-                    "name": "Charola de tacos", 
-                    "description": "5 tacos (suadero, pastor, choriqueso, alambre, nopales con longaniza, campechano, longaniza)", 
-                    "price": 100 
+                {
+                    "id": "cha_01",
+                    "name": "Charola de tacos",
+                    "description": "5 tacos (suadero, pastor, choriqueso, alambre, nopales con longaniza, campechano, longaniza)",
+                    "price": 100
                 },
-                { 
-                    "id": "cha_02", 
-                    "name": "Charola de quesadilla", 
-                    "description": "5 quesadillas (tinga, quesillo, choriqueso, huitlacoche, champiñón, mollejas a la mexicana, grasitas)", 
-                    "price": 110 
+                {
+                    "id": "cha_02",
+                    "name": "Charola de quesadilla",
+                    "description": "5 quesadillas (tinga, quesillo, choriqueso, huitlacoche, champiñón, mollejas a la mexicana, grasitas)",
+                    "price": 110
                 },
-                { 
-                    "id": "cha_03", 
-                    "name": "Charola de sopes", 
-                    "description": "4 órdenes de sopes (solo sopes sencillos)", 
-                    "price": 110 
+                {
+                    "id": "cha_03",
+                    "name": "Charola de sopes",
+                    "description": "4 órdenes de sopes (solo sopes sencillos)",
+                    "price": 110
                 }
             ]
         }

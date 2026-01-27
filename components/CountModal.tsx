@@ -12,6 +12,7 @@ export default function CountModal() {
   const { countModal, setCountModal, selectedItem, setCartList, cartList } = MyContext();
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(selectedItem?.price || 0);
+  const [changeName, setChangeName] = useState<string>("")
   const [extras, setExtras] = useState<ExtrasType[]>([]);
   const [charolaSelections, setCharolaSelections] = useState<string[]>(Array(5).fill(''));
 
@@ -19,6 +20,7 @@ export default function CountModal() {
     setPrice(selectedItem?.price || 0);
     setExtras([]);
     setCharolaSelections(Array(5).fill(''));
+    setChangeName("");
   }, [selectedItem]);
 
   if (!countModal) return null;
@@ -26,6 +28,22 @@ export default function CountModal() {
 
   const handleIncrement = () => setQuantity(prev => prev + 1);
   const handleDecrement = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+
+  const isGuajolota = selectedItem?.category === "Guajolotas";
+  const isChalupa = selectedItem?.category === "Chalupas";
+  const isQuesadilla = selectedItem?.category === "Quesadillas";
+
+  const title = isGuajolota ? "Seleccione el sabor" : "Extras";
+
+  const guajolotaType = selectedItem?.name.includes("quesadilla")
+    ? quesadillaType
+    : tacoType;
+
+  const extrasList = (() => {
+    if (isChalupa) return ExtrasData.chalupa;
+    if (isQuesadilla) return ExtrasData.quesadilla;
+    return ExtrasData.general;
+  })();
 
   const handleClose = () => {
     setCountModal(false);
@@ -46,7 +64,7 @@ export default function CountModal() {
       ...cartList,
       {
         id: Date.now().toString(),
-        name: selectedItem.name,
+        name: selectedItem.name + " " + changeName,
         description: extras.length > 0 ? "%0A *extras*: " + extras.map(extra => extra.name).join(",") : "",
         price: price,
         quantity: quantity,
@@ -87,7 +105,7 @@ export default function CountModal() {
       <div className="mb-6">
         <p className="text-gray-600 text-sm mb-1">Seleccionaste:</p>
         <div className='flex items-center justify-between'>
-          <p className='font-semibold text-lg text-gray-900'>{selectedItem.name}</p>
+          <p className='font-semibold text-lg text-gray-900'>{selectedItem.name} {changeName}</p>
           <span className='font-bold text-lg text-orange-500'>${price.toFixed(2)}</span>
         </div>
       </div>
@@ -127,11 +145,28 @@ export default function CountModal() {
 
           {selectedItem?.extra && (
             <div className='mt-2'>
-              <p className="text-gray-800 font-bold text-lg mb-3">Extras</p>
+              <p className="text-gray-800 font-bold text-lg mb-3">
+                {title}
+              </p>
               <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
-                {selectedItem?.category === "Chalupas" ?
+                {selectedItem?.category === "Guajolotas" ?
                   <>
-                    {ExtrasData.chalupa.map((extra: ExtrasType, index: number) => (
+                    {guajolotaType.map((extra, index: number) => (
+                      <SelectedSabor
+                        key={`${extra}-${index}`}
+                        extra={extra}
+                        price={price}
+                        setPrice={setPrice}
+                        extras={extras}
+                        setChangeName={setChangeName}
+                        setExtras={setExtras}
+                      />
+                    ))
+                    }
+                  </>
+                  :
+                  <>
+                    {extrasList.map((extra: ExtrasType, index: number) => (
                       <ExtraItem
                         key={`${extra.name}-${index}`}
                         extra={extra}
@@ -142,33 +177,6 @@ export default function CountModal() {
                       />
                     ))}
                   </>
-                  :
-                  selectedItem?.category === "Quesadillas" ?
-                    <>
-                      {ExtrasData.quesadilla.map((extra: ExtrasType, index: number) => (
-                        <ExtraItem
-                          key={`${extra.name}-${index}`}
-                          extra={extra}
-                          price={price}
-                          setPrice={setPrice}
-                          extras={extras}
-                          setExtras={setExtras}
-                        />
-                      ))}
-                    </>
-                    :
-                    <>
-                      {ExtrasData.general.map((extra: ExtrasType, index: number) => (
-                        <ExtraItem
-                          key={`${extra.name}-${index}`}
-                          extra={extra}
-                          price={price}
-                          setPrice={setPrice}
-                          extras={extras}
-                          setExtras={setExtras}
-                        />
-                      ))}
-                    </>
                 }
               </div>
             </div>
@@ -295,6 +303,36 @@ const ExtraItem = ({ extra, price, setPrice, extras, setExtras }: { extra: Extra
       <span className="text-orange-500 font-bold bg-orange-50 px-2.5 py-1 rounded-lg text-sm group-hover:bg-white border border-transparent group-hover:border-orange-100 transition-colors">
         +${Number(extra.price).toFixed(2)}
       </span>
+    </label>
+  )
+}
+
+
+const SelectedSabor = ({ extra, extras, setExtras, setChangeName }: { extra: string, price: number, setPrice: React.Dispatch<React.SetStateAction<number>>, extras: ExtrasType[], setExtras: React.Dispatch<React.SetStateAction<ExtrasType[]>>, setChangeName: React.Dispatch<React.SetStateAction<string>> }) => {
+  const isChecked = extras.some((item) => item.name === extra);
+
+  return (
+    <label
+      htmlFor={`extra-${extra}`}
+      className={`flex items-center justify-between p-3 rounded-xl border transition-all cursor-pointer group ${isChecked ? 'border-orange-500 bg-orange-50' : 'border-gray-100 bg-white hover:border-orange-200'}`}
+    >
+      <div className="flex items-center gap-3">
+        <input
+          onChange={() => {
+            setExtras([{
+              name: extra,
+              price: 0
+            }]);
+            setChangeName(extra);
+          }}
+          checked={isChecked}
+          name='sabor'
+          type="radio"
+          id={`extra-${extra}`}
+          className="w-5 h-5 rounded-full border-gray-300 text-orange-500 focus:ring-orange-200 cursor-pointer accent-orange-500"
+        />
+        <span className={`font-medium ${isChecked ? 'text-orange-700' : 'text-gray-700 group-hover:text-gray-900'}`}>{extra}</span>
+      </div>
     </label>
   )
 }
