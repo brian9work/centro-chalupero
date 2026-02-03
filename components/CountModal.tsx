@@ -244,53 +244,27 @@ const CharolaForm = (
       <ItemSummary name={selectedItem.name} price={price} />
       <form onSubmit={e => handleCharolaSubmit(e)} className="flex flex-col gap-6">
         <QuantityControl quantity={quantity} setQuantity={setQuantity} />
+
+        <p className='text-gray-800'>
+          {JSON.stringify(charolaSelections)}
+        </p>
+
         <div className='mt-2'>
           <p className="text-gray-800 font-bold text-lg mb-3">
             Elige tus 5 {labelText}
           </p>
           <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
             {Array.from({ length: 5 }).map((_, index) => (
-              <div key={index} className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-gray-700">
-                  {labelText === "tacos" ? "Taco" : "Quesadilla"} {index + 1}
-                </label>
-                <select
-                  value={charolaSelections[index] || ""}
-                  onChange={(e) => {
-                    const newSelections = [...charolaSelections];
-                    newSelections[index] = e.target.value;
-                    setCharolaSelections(newSelections);
-                  }}
-                  className="w-full p-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
-                  required
-                >
-                  <option value="" disabled>Selecciona un sabor</option>
-                  {optionList.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-                {labelText === "quesadillas" &&
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id={`quesillo-${index}`}
-                      onChange={(e) => {
-                        const newSelections = [...charolaSelections];
-                        newSelections[index] = e.target.checked && `${charolaSelections[index]} con quesillo` || charolaSelections[index].replace(" con quesillo", "");
-                        setCharolaSelections(newSelections);
-                        if (e.target.checked) {
-                          setPrice(price + 5);
-                        } else {
-                          setPrice(price - 5);
-                        }
-                      }}
-                    />
-                    <label htmlFor={`quesillo-${index}`}>Con quesillo</label>
-                  </div>
-                }
-              </div>
+              <SelectedOption
+                key={index}
+                index={index}
+                labelText={labelText}
+                charolaSelections={charolaSelections}
+                setCharolaSelections={setCharolaSelections}
+                list={optionList}
+                setPrice={setPrice}
+                price={price}
+              />
             ))}
           </div>
         </div>
@@ -299,6 +273,78 @@ const CharolaForm = (
     </>
   );
 };
+
+const SelectedOption = (
+  { index, labelText, charolaSelections, setCharolaSelections, list, setPrice, price }:
+    {
+      index: number,
+      labelText: string,
+      charolaSelections: string[],
+      setCharolaSelections: React.Dispatch<React.SetStateAction<string[]>>,
+      list: string[],
+      setPrice: React.Dispatch<React.SetStateAction<number>>,
+      price: number
+    }
+) => {
+  const currentSelection = charolaSelections[index] || "";
+  const baseFlavor = currentSelection.replace(" con quesillo", "");
+  const hasQuesillo = currentSelection.includes(" con quesillo");
+
+  return (
+    <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium text-gray-700">
+        {labelText === "tacos" ? "Taco" : "Quesadilla"} {index + 1}
+      </label>
+      <select
+        value={baseFlavor}
+        onChange={(e) => {
+          const newFlavor = e.target.value;
+          const newSelections = [...charolaSelections];
+          newSelections[index] = hasQuesillo ? `${newFlavor} con quesillo` : newFlavor;
+          setCharolaSelections(newSelections);
+        }}
+        className="w-full p-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+        required
+      >
+        <option value="" disabled>Selecciona un sabor</option>
+        {list.map((type) => (
+          <option key={type} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+      {labelText === "quesadillas" &&
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            id={`quesillo-${index}`}
+            checked={hasQuesillo}
+            onChange={(e) => {
+              const checked = e.target.checked;
+              const newSelections = [...charolaSelections];
+
+              if (checked) {
+                newSelections[index] = `${baseFlavor} con quesillo`;
+                setPrice((prev) => prev + 5);
+              } else {
+                newSelections[index] = baseFlavor;
+                setPrice((prev) => prev - 5);
+              }
+              setCharolaSelections(newSelections);
+            }}
+            disabled={!baseFlavor}
+          />
+          <label
+            htmlFor={`quesillo-${index}`}
+            className={`text-gray-800 ${!baseFlavor ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+          >
+            Con quesillo
+          </label>
+        </div>
+      }
+    </div>
+  )
+}
 
 // --- Item Helpers ---
 
