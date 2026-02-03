@@ -4,51 +4,131 @@ import React, { useEffect, useState } from 'react';
 import ModalHeader from './ModalHeader';
 import ModalComponents from './ModalComponents';
 import ExtrasData from '@/mock/extras.json'
-import { ExtrasType } from '@/types/ResponseTypes';
+import { ExtrasType, SaucerType } from '@/types/ResponseTypes';
 import tacoType from '@/mock/tacosType.json'
 import quesadillaType from '@/mock/QuesadillasType.json'
 
 export default function CountModal() {
-  const { countModal, setCountModal, selectedItem, setCartList, cartList } = MyContext();
+  const { countModal, setCountModal, selectedItem } = MyContext();
+
+  if (!countModal || !selectedItem) return null;
+
+  const handleClose = () => setCountModal(false);
+
+  // Determine if it's a "Charola" that requires the 5-selection form.
+  // "Charola de sopes" is explicitly excluded and treated as a standard item.
+  const isSpecialCharola = selectedItem.category === "Charolas" && selectedItem.name !== "Charola de sopes";
+
+  return (
+    <ModalComponents handleClose={handleClose}>
+      <ModalHeader text="Agregar Platillo" handleClose={handleClose} />
+
+      {isSpecialCharola ? (
+        <CharolaForm
+          selectedItem={selectedItem}
+          handleClose={handleClose}
+        />
+      ) : (
+        <StandardForm
+          selectedItem={selectedItem}
+          handleClose={handleClose}
+        />
+      )}
+    </ModalComponents>
+  );
+}
+
+// --- Sub-Components ---
+
+const ItemSummary = ({ name, priceChange = "", price }: { name: string, priceChange?: string, price: number }) => (
+  <div className="mb-6">
+    <p className="text-gray-600 text-sm mb-1">Seleccionaste:</p>
+    <div className='flex items-center justify-between'>
+      <p className='font-semibold text-lg text-gray-900'>{name} {priceChange}</p>
+      <span className='font-bold text-lg text-orange-500'>${price.toFixed(2)}</span>
+    </div>
+  </div>
+);
+
+const QuantityControl = ({ quantity, setQuantity }: { quantity: number, setQuantity: (q: number) => void }) => {
+  const handleIncrement = () => setQuantity(quantity + 1);
+  const handleDecrement = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+
+  return (
+    <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
+      <button
+        type="button"
+        onClick={handleDecrement}
+        className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition-all"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+        </svg>
+      </button>
+
+      <input
+        type="number"
+        min="1"
+        value={quantity}
+        onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+        className="w-16 text-center bg-transparent font-bold text-xl text-gray-800 focus:outline-none appearance-none m-0"
+        style={{ MozAppearance: 'textfield' }}
+      />
+
+      <button
+        type="button"
+        onClick={handleIncrement}
+        className="w-10 h-10 flex items-center justify-center bg-orange-500 rounded-xl shadow-md shadow-orange-200 text-white hover:bg-orange-600 active:scale-95 transition-all"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+    </div>
+  );
+};
+
+const AddToCartButton = ({ price, quantity }: { price: number, quantity: number }) => (
+  <button
+    type="submit"
+    className="w-full bg-orange-500 text-white py-3.5 rounded-2xl font-semibold shadow-lg shadow-gray-200 hover:bg-orange-600 active:scale-95 transition-all flex items-center justify-center gap-2"
+  >
+    <span>Agregar al Carrito</span>
+    <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
+      ${(price * quantity).toFixed(2)}
+    </span>
+  </button>
+);
+
+// --- Forms ---
+
+const StandardForm = ({ selectedItem, handleClose }: { selectedItem: SaucerType, handleClose: () => void }) => {
+  const { setCartList, cartList } = MyContext();
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(selectedItem?.price || 0);
-  const [changeName, setChangeName] = useState<string>("")
+  const [price, setPrice] = useState(selectedItem.price);
   const [extras, setExtras] = useState<ExtrasType[]>([]);
-  const [charolaSelections, setCharolaSelections] = useState<string[]>(Array(5).fill(''));
+  const [changeName, setChangeName] = useState<string>("");
 
   useEffect(() => {
-    setPrice(selectedItem?.price || 0);
+    setPrice(selectedItem.price);
     setExtras([]);
-    setCharolaSelections(Array(5).fill(''));
     setChangeName("");
+    setQuantity(1);
   }, [selectedItem]);
 
-  if (!countModal) return null;
-  if (!selectedItem) return null;
-
-  const handleIncrement = () => setQuantity(prev => prev + 1);
-  const handleDecrement = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
-
-  const isGuajolota = selectedItem?.category === "Guajolotas";
-  const isChalupa = selectedItem?.category === "Chalupas";
-  const isQuesadilla = selectedItem?.category === "Quesadillas";
+  const isGuajolota = selectedItem.category === "Guajolotas";
+  const isChalupa = selectedItem.category === "Chalupas";
+  const isQuesadilla = selectedItem.category === "Quesadillas";
 
   const title = isGuajolota ? "Seleccione el sabor" : "Extras";
 
-  const guajolotaType = selectedItem?.name.includes("quesadilla")
-    ? quesadillaType
-    : tacoType;
+  const guajolotaType = selectedItem.name.includes("quesadilla") ? quesadillaType : tacoType;
 
   const extrasList = (() => {
     if (isChalupa) return ExtrasData.chalupa;
     if (isQuesadilla) return ExtrasData.quesadilla;
     return ExtrasData.general;
   })();
-
-  const handleClose = () => {
-    setCountModal(false);
-    setQuantity(1);
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +154,65 @@ export default function CountModal() {
     handleClose();
   };
 
-  const handleCharolaSubmit = (e: React.FormEvent) => {
+  return (
+    <>
+      <ItemSummary name={selectedItem.name} priceChange={changeName} price={price} />
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <QuantityControl quantity={quantity} setQuantity={setQuantity} />
+
+        {selectedItem.extra && (
+          <div className='mt-2'>
+            <p className="text-gray-800 font-bold text-lg mb-3">{title}</p>
+            <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
+              {isGuajolota ? (
+                guajolotaType.map((extra, index) => (
+                  <SelectedSabor
+                    key={`${extra}-${index}`}
+                    extra={extra}
+                    price={price}
+                    setPrice={setPrice}
+                    extras={extras}
+                    setChangeName={setChangeName}
+                    setExtras={setExtras}
+                  />
+                ))
+              ) : (
+                extrasList.map((extra: ExtrasType, index: number) => (
+                  <ExtraItem
+                    key={`${extra.name}-${index}`}
+                    extra={extra}
+                    price={price}
+                    setPrice={setPrice}
+                    extras={extras}
+                    setExtras={setExtras}
+                  />
+                ))
+              )}
+            </div>
+          </div>
+        )}
+
+        <AddToCartButton price={selectedItem.price} quantity={quantity} />
+      </form>
+    </>
+  );
+};
+
+const CharolaForm = (
+  { selectedItem, handleClose }:
+    { selectedItem: SaucerType, handleClose: () => void }
+) => {
+  const [price, setPrice] = useState(selectedItem.price);
+  const { setCartList, cartList } = MyContext();
+  const [quantity, setQuantity] = useState(1);
+  const [charolaSelections, setCharolaSelections] = useState<string[]>(Array(5).fill(''));
+
+  useEffect(() => {
+    setQuantity(1);
+    setCharolaSelections(Array(5).fill(''));
+  }, [selectedItem]);
+
+  const handleCharolaSubmit = (e: React.FormEvent, close?: boolean) => {
     e.preventDefault();
     if (charolaSelections.some(s => s === "")) {
       alert("Por favor selecciona todos los sabores.");
@@ -90,7 +228,7 @@ export default function CountModal() {
           acc[curr] = (acc[curr] || 0) + 1;
           return acc;
         }, {} as Record<string, number>)).map(([key, value]) => `${value} de ${key}`).join(", "),
-        price: selectedItem.price,
+        price: price,
         quantity: quantity,
         selectedOptions: charolaSelections,
       },
@@ -98,184 +236,71 @@ export default function CountModal() {
     handleClose();
   };
 
+  const optionList = selectedItem.name.toLowerCase().includes("taco") ? tacoType : quesadillaType;
+  const labelText = selectedItem.name.toLowerCase().includes("taco") ? "tacos" : "quesadillas";
+
   return (
-    <ModalComponents handleClose={handleClose}>
-      <ModalHeader text="Agregar Platillo" handleClose={handleClose} />
-
-      <div className="mb-6">
-        <p className="text-gray-600 text-sm mb-1">Seleccionaste:</p>
-        <div className='flex items-center justify-between'>
-          <p className='font-semibold text-lg text-gray-900'>{selectedItem.name} {changeName}</p>
-          <span className='font-bold text-lg text-orange-500'>${price.toFixed(2)}</span>
-        </div>
-      </div>
-
-      {selectedItem?.category !== "Charolas" || selectedItem.name === "Charola de sopes" ?
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
-            <button
-              type="button"
-              onClick={handleDecrement}
-              className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition-all"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-              </svg>
-            </button>
-
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-              className="w-16 text-center bg-transparent font-bold text-xl text-gray-800 focus:outline-none appearance-none m-0"
-              style={{ MozAppearance: 'textfield' }} // Removes spinner on Firefox
-            />
-
-            <button
-              type="button"
-              onClick={handleIncrement}
-              className="w-10 h-10 flex items-center justify-center bg-orange-500 rounded-xl shadow-md shadow-orange-200 text-white hover:bg-orange-600 active:scale-95 transition-all"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-            </button>
-          </div>
-
-          {selectedItem?.extra && (
-            <div className='mt-2'>
-              <p className="text-gray-800 font-bold text-lg mb-3">
-                {title}
-              </p>
-              <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
-                {selectedItem?.category === "Guajolotas" ?
-                  <>
-                    {guajolotaType.map((extra, index: number) => (
-                      <SelectedSabor
-                        key={`${extra}-${index}`}
-                        extra={extra}
-                        price={price}
-                        setPrice={setPrice}
-                        extras={extras}
-                        setChangeName={setChangeName}
-                        setExtras={setExtras}
-                      />
-                    ))
-                    }
-                  </>
-                  :
-                  <>
-                    {extrasList.map((extra: ExtrasType, index: number) => (
-                      <ExtraItem
-                        key={`${extra.name}-${index}`}
-                        extra={extra}
-                        price={price}
-                        setPrice={setPrice}
-                        extras={extras}
-                        setExtras={setExtras}
-                      />
-                    ))}
-                  </>
-                }
-              </div>
-            </div>
-          )}
-
-          <button
-            type="submit"
-            className="w-full bg-black text-white py-3.5 rounded-2xl font-semibold shadow-lg shadow-gray-200 hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2"
-          >
-            <span>Agregar al Carrito</span>
-            <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
-              ${(selectedItem.price * quantity).toFixed(2)}
-            </span>
-          </button>
-        </form>
-        :
-        <>
-          <form onSubmit={handleCharolaSubmit} className="flex flex-col gap-6">
-            <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-2 border border-gray-100">
-              <button
-                type="button"
-                onClick={handleDecrement}
-                className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition-all"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-                </svg>
-              </button>
-
-              <input
-                type="number"
-                min="1"
-                value={quantity}
-                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                className="w-16 text-center bg-transparent font-bold text-xl text-gray-800 focus:outline-none appearance-none m-0"
-                style={{ MozAppearance: 'textfield' }}
-              />
-
-              <button
-                type="button"
-                onClick={handleIncrement}
-                className="w-10 h-10 flex items-center justify-center bg-orange-500 rounded-xl shadow-md shadow-orange-200 text-white hover:bg-orange-600 active:scale-95 transition-all"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-              </button>
-            </div>
-
-            <div className='mt-2'>
-              <p className="text-gray-800 font-bold text-lg mb-3">
-                Elige tus 5 {selectedItem?.name.toLowerCase().includes("taco") ? "tacos" : "quesadillas"}
-              </p>
-              <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <div key={index} className="flex flex-col gap-1">
-                    <label className="text-sm font-medium text-gray-700">
-                      {selectedItem?.name.toLowerCase().includes("taco") ? `Taco` : `Quesadilla`} {index + 1}
-                    </label>
-                    <select
-                      value={charolaSelections[index] || ""}
+    <>
+      <ItemSummary name={selectedItem.name} price={price} />
+      <form onSubmit={e => handleCharolaSubmit(e)} className="flex flex-col gap-6">
+        <QuantityControl quantity={quantity} setQuantity={setQuantity} />
+        <div className='mt-2'>
+          <p className="text-gray-800 font-bold text-lg mb-3">
+            Elige tus 5 {labelText}
+          </p>
+          <div className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <div key={index} className="flex flex-col gap-1">
+                <label className="text-sm font-medium text-gray-700">
+                  {labelText === "tacos" ? "Taco" : "Quesadilla"} {index + 1}
+                </label>
+                <select
+                  value={charolaSelections[index] || ""}
+                  onChange={(e) => {
+                    const newSelections = [...charolaSelections];
+                    newSelections[index] = e.target.value;
+                    setCharolaSelections(newSelections);
+                  }}
+                  className="w-full p-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                  required
+                >
+                  <option value="" disabled>Selecciona un sabor</option>
+                  {optionList.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+                {labelText === "quesadillas" &&
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id={`quesillo-${index}`}
                       onChange={(e) => {
                         const newSelections = [...charolaSelections];
-                        newSelections[index] = e.target.value;
+                        newSelections[index] = e.target.checked && `${charolaSelections[index]} con quesillo` || charolaSelections[index].replace(" con quesillo", "");
                         setCharolaSelections(newSelections);
+                        if (e.target.checked) {
+                          setPrice(price + 5);
+                        } else {
+                          setPrice(price - 5);
+                        }
                       }}
-                      className="w-full p-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
-                      required
-                    >
-                      <option value="" disabled>Selecciona un sabor</option>
-                      {(selectedItem?.name.toLowerCase().includes("taco") ? tacoType : quesadillaType).map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
+                    />
+                    <label htmlFor={`quesillo-${index}`}>Con quesillo</label>
                   </div>
-                ))}
+                }
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+        <AddToCartButton price={price} quantity={quantity} />
+      </form>
+    </>
+  );
+};
 
-            <button
-              type="submit"
-              className="w-full bg-black text-white py-3.5 rounded-2xl font-semibold shadow-lg shadow-gray-200 hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2"
-            >
-              <span>Agregar al Carrito</span>
-              <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
-                ${(selectedItem.price * quantity).toFixed(2)}
-              </span>
-            </button>
-          </form>
-        </>
-
-      }
-
-
-    </ModalComponents>
-  )
-}
+// --- Item Helpers ---
 
 const ExtraItem = ({ extra, price, setPrice, extras, setExtras }: { extra: ExtrasType, price: number, setPrice: React.Dispatch<React.SetStateAction<number>>, extras: ExtrasType[], setExtras: React.Dispatch<React.SetStateAction<ExtrasType[]>> }) => {
   return (
@@ -306,7 +331,6 @@ const ExtraItem = ({ extra, price, setPrice, extras, setExtras }: { extra: Extra
     </label>
   )
 }
-
 
 const SelectedSabor = ({ extra, extras, setExtras, setChangeName }: { extra: string, price: number, setPrice: React.Dispatch<React.SetStateAction<number>>, extras: ExtrasType[], setExtras: React.Dispatch<React.SetStateAction<ExtrasType[]>>, setChangeName: React.Dispatch<React.SetStateAction<string>> }) => {
   const isChecked = extras.some((item) => item.name === extra);
