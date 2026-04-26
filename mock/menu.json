@@ -86,42 +86,42 @@
                     "id": "to_01",
                     "name": "Torta de Suadero",
                     "description": "Torta de suadero",
-                    "price": 40,
+                    "price": 45,
                     "extra": true
                 },
                 {
                     "id": "to_02",
                     "name": "Torta de Pastor",
                     "description": "Torta de pastor",
-                    "price": 40,
+                    "price": 45,
                     "extra": true
                 },
                 {
                     "id": "to_03",
                     "name": "Torta de Alambre",
                     "description": "Torta de alambre",
-                    "price": 40,
+                    "price": 45,
                     "extra": true
                 },
                 {
                     "id": "to_04",
                     "name": "Torta de Longaniza",
                     "description": "Torta de longaniza",
-                    "price": 40,
+                    "price": 45,
                     "extra": true
                 },
                 {
                     "id": "to_05",
                     "name": "Torta de Choriqueso",
                     "description": "Torta de choriqueso",
-                    "price": 40,
+                    "price": 45,
                     "extra": true
                 },
                 {
                     "id": "to_06",
                     "name": "Torta de Campechana",
                     "description": "Torta campechana",
-                    "price": 40,
+                    "price": 45,
                     "extra": true
                 }
             ]
@@ -135,20 +135,20 @@
                     "id": "gu_01",
                     "name": "Guajolota de chalupas",
                     "description": "Guajolota rellena de chalupas",
-                    "price": 40
+                    "price": 45
                 },
                 {
                     "id": "gu_02",
                     "name": "Guajolota quesadilla",
                     "description": "Guajolota rellena de quesadilla",
-                    "price": 50,
+                    "price": 55,
                     "extra": true
                 },
                 {
                     "id": "gu_03",
                     "name": "Guajolota taco",
                     "description": "Guajolota rellena de taco",
-                    "price": 50,
+                    "price": 55,
                     "extra": true
                 }
             ]
@@ -162,43 +162,43 @@
                     "id": "pam_01",
                     "name": "Pambazo de Tinga",
                     "description": "Pambazo de tinga",
-                    "price": 38
+                    "price": 45
                 },
                 {
                     "id": "pam_02",
                     "name": "Pambazo de Papas con chorizo",
                     "description": "Pambazo de papas con chorizo",
-                    "price": 38
+                    "price": 45
                 },
                 {
                     "id": "pam_03",
                     "name": "Pambazo de Alambre",
                     "description": "Pambazo de alambre",
-                    "price": 38
+                    "price": 45
                 },
                 {
                     "id": "pam_04",
                     "name": "Pambazo de Chicharron prensado",
                     "description": "Pambazo de chicharrón prensado",
-                    "price": 38
+                    "price": 45
                 },
                 {
                     "id": "pam_05",
                     "name": "Pambazo de Choriqueso",
                     "description": "Pambazo de choriqueso",
-                    "price": 38
+                    "price": 48
                 },
                 {
                     "id": "pam_06",
                     "name": "Pambazo de Suadero",
                     "description": "Pambazo de suadero",
-                    "price": 40
+                    "price": 48
                 },
                 {
                     "id": "pam_07",
                     "name": "Pambazo de Pastor",
                     "description": "Pambazo de pastor",
-                    "price": 40
+                    "price": 48
                 }
             ]
         },
@@ -211,19 +211,19 @@
                     "id": "pos_01",
                     "name": "Carlota de limón",
                     "description": "Postre de carlota de limón",
-                    "price": 30
+                    "price": 35
                 },
                 {
                     "id": "pos_05",
                     "name": "Flan sencillo",
                     "description": "Postre de flan sencillo",
-                    "price": 20
+                    "price": 25
                 },
                 {
                     "id": "pos_02",
                     "name": "Fresas con crema",
                     "description": "Postre de fresas con crema",
-                    "price": 30
+                    "price": 35
                 }
             ]
         },
@@ -306,7 +306,7 @@
                     "id": "sos_02",
                     "name": "Sope (1 pieza)",
                     "description": "Una pieza de sope sencillo",
-                    "price": 12
+                    "price": 15
                 }
             ]
         },
@@ -319,31 +319,31 @@
                     "id": "gri_01",
                     "name": "Gringas de Suadero",
                     "description": "Gringa de suadero",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "gri_02",
                     "name": "Gringas de Longaniza",
                     "description": "Gringa de longaniza",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "gri_03",
                     "name": "Gringas de Pastor",
                     "description": "Gringa de pastor",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "gri_04",
                     "name": "Gringas de Alambre",
                     "description": "Gringa de alambre",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "gri_05",
                     "name": "Gringas de Choriqueso",
                     "description": "Gringa de choriqueso",
-                    "price": 45
+                    "price": 50
                 }
             ]
         },
@@ -356,7 +356,7 @@
                     "id": "tos_01",
                     "name": "Tostada de Tinga",
                     "description": "Tostada de tinga",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "tos_04",
@@ -368,13 +368,13 @@
                     "id": "tos_02",
                     "name": "Tostada de Pata",
                     "description": "Tostada de pata",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "tos_03",
                     "name": "Tostada Combinada (tinga y pata)",
                     "description": "Tostada mixta de tinga y pata",
-                    "price": 45
+                    "price": 50
                 },
                 {
                     "id": "tos_05",
@@ -393,91 +393,91 @@
                     "id": "que_01",
                     "name": "Quesadilla de Tinga",
                     "description": "Quesadilla de tinga",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_02",
                     "name": "Quesadilla de Quesillo",
                     "description": "Quesadilla de solo quesillo",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_03",
                     "name": "Quesadilla de Chicharron prensado",
                     "description": "Quesadilla de chicharrón prensado",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_04",
                     "name": "Quesadilla de Longaniza",
                     "description": "Quesadilla de longaniza",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_05",
                     "name": "Quesadilla de Pastor",
                     "description": "Quesadilla de pastor",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_06",
                     "name": "Quesadilla de Suadero",
                     "description": "Quesadilla de suadero",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_07",
                     "name": "Quesadilla de Alambre",
                     "description": "Quesadilla de alambre",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_08",
                     "name": "Quesadilla de Choriqueso",
                     "description": "Quesadilla de choriqueso",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_09",
                     "name": "Quesadilla de Huitlacoche",
                     "description": "Quesadilla de huitlacoche",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_10",
                     "name": "Quesadilla de Champiñón",
                     "description": "Quesadilla de champiñón",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_11",
                     "name": "Quesadilla de Mollejas a la mexicana",
                     "description": "Quesadilla de mollejas a la mexicana",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_12",
                     "name": "Quesadilla de Grasitas",
                     "description": "Quesadilla de grasitas",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 },
                 {
                     "id": "que_13",
                     "name": "Quesadilla de Nopales con longaniza",
                     "description": "Quesadilla de nopales con longaniza",
-                    "price": 25,
+                    "price": 30,
                     "extra": true
                 }
             ]
@@ -491,49 +491,49 @@
                     "id": "tac_01",
                     "name": "Taco de Suadero",
                     "description": "Taco de suadero",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_02",
                     "name": "Taco de Longaniza",
                     "description": "Taco de longaniza",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_03",
                     "name": "Taco de Pastor",
                     "description": "Taco de pastor",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_04",
                     "name": "Taco de Choriqueso",
                     "description": "Taco de choriqueso",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_05",
                     "name": "Taco de Alambre",
                     "description": "Taco de alambre",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_06",
                     "name": "Taco de Nopales con longaniza",
                     "description": "Taco de nopales con longaniza",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_07",
                     "name": "Taco de Campechano",
                     "description": "Taco campechano",
-                    "price": 23
+                    "price": 28
                 },
                 {
                     "id": "tac_08",
                     "name": "Taco de Mollejas a la mexicana",
                     "description": "Taco de mollejas a la mexicana",
-                    "price": 23
+                    "price": 28
                 }
             ]
         },
@@ -546,49 +546,49 @@
                     "id": "tac_har_01",
                     "name": "Taco de Suadero de harina",
                     "description": "Taco de suadero",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_02",
                     "name": "Taco de Longaniza de harina",
                     "description": "Taco de longaniza",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_03",
                     "name": "Taco de Pastor de harina",
                     "description": "Taco de pastor",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_04",
                     "name": "Taco de Choriqueso de harina",
                     "description": "Taco de choriqueso",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_05",
                     "name": "Taco de Alambre de harina",
                     "description": "Taco de alambre",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_06",
                     "name": "Taco de Nopales de harina con longaniza",
                     "description": "Taco de nopales con longaniza",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_07",
                     "name": "Taco de Campechano de harina",
                     "description": "Taco campechano",
-                    "price": 25
+                    "price": 35
                 },
                 {
                     "id": "tac_har_08",
                     "name": "Taco de Mollejas a la mexicana de harina",
                     "description": "Taco de mollejas a la mexicana",
-                    "price": 25
+                    "price": 35
                 }
             ]
         },
@@ -601,13 +601,13 @@
                     "id": "cha_01",
                     "name": "Charola de tacos",
                     "description": "5 tacos (suadero, pastor, choriqueso, alambre, nopales con longaniza, campechano, longaniza)",
-                    "price": 100
+                    "price": 130
                 },
                 {
                     "id": "cha_02",
                     "name": "Charola de quesadilla",
                     "description": "5 quesadillas (tinga, quesillo, choriqueso, huitlacoche, champiñón, mollejas a la mexicana, grasitas)",
-                    "price": 110
+                    "price": 140
                 },
                 {
                     "id": "cha_03",
