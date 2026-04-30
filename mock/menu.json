@@ -9,70 +9,70 @@
                     "id": "sp_01",
                     "name": "Sope preparado (Tinga)",
                     "description": "Sope preparado con tinga",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_02",
                     "name": "Sope preparado (Chicharron prensado)",
                     "description": "Sope preparado con chicharrón prensado",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_03",
                     "name": "Sope preparado (Alambre)",
                     "description": "Sope preparado con alambre",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_04",
                     "name": "Sope preparado (Suadero)",
                     "description": "Sope preparado con suadero",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_05",
                     "name": "Sope preparado (Pastor)",
                     "description": "Sope preparado con pastor",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_06",
                     "name": "Sope preparado (Quesillo)",
                     "description": "Sope preparado con quesillo",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_07",
                     "name": "Sope preparado (Longaniza)",
                     "description": "Sope preparado con longaniza",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_08",
                     "name": "Sope preparado (Grasitas)",
                     "description": "Sope preparado con grasitas",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_09",
                     "name": "Sope preparado (Campechano)",
                     "description": "Sope preparado con campechano",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 },
                 {
                     "id": "sp_10",
                     "name": "Sope preparado (Choriqueso)",
                     "description": "Sope preparado con choriqueso",
-                    "price": 30,
+                    "price": 35,
                     "extra": true
                 }
             ]
