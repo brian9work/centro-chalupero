@@ -236,13 +236,13 @@
                     "id": "beb_01",
                     "name": "Café de olla 1/2 litro",
                     "description": "Bebida Café de olla",
-                    "price": 20
+                    "price": 25
                 },
                 {
                     "id": "beb_02",
                     "name": "Café de olla 1 litro",
                     "description": "Bebida Café de olla",
-                    "price": 30
+                    "price": 40
                 },
                 {
                     "id": "beb_03",
@@ -260,13 +260,13 @@
                     "id": "beb_05",
                     "name": "Agua fresca 1/2 litro",
                     "description": "Bebida Agua fresca",
-                    "price": 25
+                    "price": 30
                 },
                 {
                     "id": "beb_06",
                     "name": "Agua fresca 1 litro",
                     "description": "Bebida Agua fresca",
-                    "price": 35
+                    "price": 40
                 }
             ]
         },
